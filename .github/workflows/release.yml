@@ -58,7 +58,7 @@ jobs:
             ASSET_PATH: ${{ env.ASSET_NAME }}.zip
         run: |
           cd ./scripts
-          export ANDROID_NDK=$ANDROID_HOME/ndk-bundle && ./build_android.sh
+          export ANDROID_NDK=$ANDROID_NDK_LATEST_HOME/ndk-bundle && ./build_android.sh
           cd ./release
           zip -9r ${ASSET_PATH} .
       - name: Upload_asset

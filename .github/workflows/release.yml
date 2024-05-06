@@ -117,7 +117,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.ASSET_NAME }}
-          path: .\scripts\msvc_release\${{ env.ASSET_NAME }}.zip
+          path: .\scripts\build_win\${{ env.ASSET_NAME }}.zip
           if-no-files-found: error
 
   release:

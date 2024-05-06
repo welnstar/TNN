@@ -55,14 +55,16 @@ jobs:
         run: sudo apt-get install attr
       - name: Setup Android NDK
         uses: nttld/setup-ndk@v1.4.2
+        id: setup-ndk
         with:
           ndk-version: r21e
+          add-to-path: false
       - name: Build
         env:
             ASSET_PATH: ${{ env.ASSET_NAME }}.zip
         run: |
           cd ./scripts
-          export ANDROID_NDK=$ANDROID_HOME/ndk-bundle && ./build_android.sh
+          export ANDROID_NDK=${{ steps.setup-ndk.outputs.ndk-path }} && ./build_android.sh
           cd ./release
           zip -9r ${ASSET_PATH} .
       - name: Upload_asset
